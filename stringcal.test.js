@@ -1,16 +1,13 @@
 const StringCalculator = require("./Stringcal");
+const calculator = new StringCalculator();
 
-test("empty string should return 0", () => {
-  const calculator = new StringCalculator();
-  expect(calculator.add("")).toBe(0);
-});
+function checkResult(expression, expected) {
+  test(`should evaluate "${expression}" to ${expected}`, () => {
+    expect(calculator.add(expression)).toBe(expected);
+  });
+}
 
-test("single number should return the number itself", () => {
-  const calculator = new StringCalculator();
-  expect(calculator.add("1")).toBe(1);
-});
-
-test("two number return their sum", () => {
-  const calculator = new StringCalculator();
-  expect(calculator.add("1,2,3,4")).toBe(10);
-});
+checkResult("", 0);
+checkResult("42", 42);
+checkResult("1,2", 3);
+checkResult("1,2\n", 3);
