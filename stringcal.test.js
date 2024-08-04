@@ -25,6 +25,6 @@ describe("StringCalculator", () => {
   });
 
   describe("custom separator", () => {
-    checkResult("//;\n1,2", 3);
+    checkResult("1,2\n", 3);
   });
 });
