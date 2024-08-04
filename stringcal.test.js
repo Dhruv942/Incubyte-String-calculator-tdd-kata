@@ -9,3 +9,8 @@ test("single number should return the number itself", () => {
   const calculator = new StringCalculator();
   expect(calculator.add("1")).toBe(1);
 });
+
+test("two number return their sum", () => {
+  const calculator = new StringCalculator();
+  expect(calculator.add("1,2,3,4")).toBe(10);
+});
