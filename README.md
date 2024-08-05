@@ -1,27 +1,20 @@
-StringCalculator TDD Kata
-
-StringCalculator is a simple class that performs addition of numbers extracted from a string input. It supports custom delimiters and handles negative numbers by throwing an error if any are found.
+String Calculator
+Overview
+The String Calculator is a simple application designed to evaluate arithmetic expressions given as strings. It supports basic operations such as addition and can handle different types of delimiters. It also includes validation to prevent the use of negative numbers and ignores numbers greater than 1000.
 
 Features
-Custom Delimiters: Allows specifying custom delimiters.
-Handles Multiple Delimiters: Supports both commas and newlines as delimiters.
-Negative Number Detection: Throws an error if negative numbers are present.
-Ignore Large Numbers: Numbers greater than 1000 are ignored.
+Basic functionality: Supports empty strings and single numbers.
+Comma separator: Handles comma-separated values.
+Newline separator: Supports newline-separated values.
+Custom separator: Allows for user-defined delimiters.
+Negative number validation: Throws exceptions for negative numbers.
+Large number handling: Ignores numbers greater than 1000.
+Installation
 
 
+To use the String Calculator, clone this repository and install the necessary dependencies.
 
-Test-Driven Development (TDD)
-The StringCalculator class is developed following Test-Driven Development (TDD) principles.
-
-TDD Workflow
-Write Tests First:
-
-Begin by writing test cases for the expected functionality before implementing the code.
-Red-Green-Refactor Cycle:
-
-Red: Write a failing test case that defines a new feature or improvement.
-Green: Implement the minimum code required to make the test pass.
-Refactor: Clean up the code while ensuring that all tests continue to pass.
-Small Iterations:
-
-Make small, incremental changes and ensure each change is tested thoroughly.
+Copy code
+git clone <repository-url>
+cd <repository-directory>
+npm install
