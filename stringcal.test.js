@@ -51,4 +51,11 @@ describe("StringCalculator", () => {
   describe("Delimiters can be of any length  “//[delimiter]\n” ", () => {
     checkResult("//[***]\n1***2***3", 6);
   });
+
+  describe("multiple delimiters", () => {
+    checkResult("//[*][%]\n1*2%3%4", 10);
+  });
+  describe("Delimiters can be of any length", () => {
+    checkResult("//[***]\n1***2***3", 6);
+  });
 });
