@@ -8,6 +8,12 @@ describe("StringCalculator", () => {
     });
   }
 
+  function checkException(expression, expectedMessage) {
+    test(`should throw exception for "${expression}"`, () => {
+      expect(() => calculator.add(expression)).toThrowError(expectedMessage);
+    });
+  }
+
   describe("basic functionality", () => {
     checkResult("", 0);
   });
@@ -26,5 +32,8 @@ describe("StringCalculator", () => {
 
   describe("custom separator", () => {
     checkResult("1,2\n", 3);
+  });
+  describe("negative number handling", () => {
+    checkException("1,-2", "negative numbers not allowed -2");
   });
 });

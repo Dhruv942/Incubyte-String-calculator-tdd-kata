@@ -34,11 +34,23 @@ class StringCalculator {
   }
 
   calculateSum(numbers) {
-    let total = 0;
+    let sum = 0;
+    let negatives = [];
+
     for (let i = 0; i < numbers.length; i++) {
-      total += parseInt(numbers[i] || 0);
+      let num = parseInt(numbers[i] || 0);
+      if (num < 0) {
+        negatives.push(num);
+      }
+
+      sum += num;
     }
-    return total;
+
+    if (negatives.length > 0) {
+      throw new Error(`negative numbers not allowed ${negatives.join(", ")}`);
+    }
+
+    return sum;
   }
 }
 
