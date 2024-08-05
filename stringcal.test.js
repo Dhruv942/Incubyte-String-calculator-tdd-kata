@@ -28,6 +28,8 @@ describe("StringCalculator", () => {
 
   describe("comma-separator and newline handling", () => {
     checkResult("1,2\n3", 6);
+  });
+  describe("comma-separator and newline handling", () => {
     checkResult("1,2\n3,4\n", 10);
   });
 
