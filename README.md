@@ -19,7 +19,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/yourusername/string-calculator
+git repo clone Dhruv942/String-calculator-tdd-kata
 Navigate to the project directory:
 
 bash
@@ -31,10 +31,9 @@ bash
 Copy code
 npm install
 Usage
-Run the program:npm test
+Run the program:
 
 
-The program will output the sum of the numbers, handling custom delimiters and negative number errors as specified.
 
 Running the Tests
 To ensure the reliability of the calculator, unit tests are provided. To run these tests:
@@ -43,3 +42,5 @@ bash npm test
 Built With
 Node.js - The runtime used
 Jest - Testing framework
+
+Your Name - Initial work
