@@ -22,15 +22,17 @@ class StringCalculator {
 
   splitRecursively(inputs, delimiters) {
     if (delimiters.length === 0) {
-      return inputs.flatMap((input) => input.split(delimiters[0]));
+      return inputs;
     }
 
-    const currentDelimiter = delimiters.pop();
+    const currentDelimiter = delimiters[0];
+    const remainingDelimiters = delimiters.slice(1);
+
     let splitResults = [];
     for (let i = 0; i < inputs.length; i++) {
       splitResults = splitResults.concat(inputs[i].split(currentDelimiter));
     }
-    return this.splitRecursively(splitResults, delimiters);
+    return this.splitRecursively(splitResults, remainingDelimiters);
   }
 
   calculateSum(numbers) {

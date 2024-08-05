@@ -1,4 +1,4 @@
-const StringCalculator = require("./Stringcal");
+const StringCalculator = require("./stringcal.js");
 const calculator = new StringCalculator();
 
 describe("StringCalculator", () => {
@@ -17,7 +17,8 @@ describe("StringCalculator", () => {
   describe("basic functionality", () => {
     checkResult("", 0);
   });
-  describe("Handling single number", () => {
+
+  describe("handling single number", () => {
     checkResult("2", 2);
   });
 
@@ -26,14 +27,19 @@ describe("StringCalculator", () => {
   });
 
   describe("comma-separator and newline handling", () => {
-    checkResult("1,2\n", 3);
-    checkResult("1,2\n,3\n,4\n", 10);
+    checkResult("1,2\n3", 6);
+    checkResult("1,2\n3,4\n", 10);
   });
 
   describe("custom separator", () => {
-    checkResult("1,2\n", 3);
+    checkResult("//;\n1;2", 3);
   });
-  describe("negative number handling", () => {
+
+  describe("negative number not allowed", () => {
     checkException("1,-2", "negative numbers not allowed -2");
+  });
+
+  describe("multiple negative numbers not allowed", () => {
+    checkException("1,-2,-3", "negative numbers not allowed -2, -3");
   });
 });
