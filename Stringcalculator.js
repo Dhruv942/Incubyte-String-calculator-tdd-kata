@@ -1,76 +1,44 @@
-class StringCalculator {
-  add(input) {
-    if (!input) return 0;
-
-    if (input.startsWith("//")) {
-      const delimiterEndIndex = input.indexOf("\n");
-      const delimiterPart = input.substring(2, delimiterEndIndex);
-
-      let delimiters = [",", "\n"];
-      if (delimiterPart.startsWith("[")) {
-        delimiters = this.extractDelimiters(delimiterPart);
-      } else {
-        delimiters = [delimiterPart];
+function add(numbers) {
+  if (numbers.startsWith("//")) {
+    const delimiter = numbers[2];
+    numbers = numbers.slice(4);
+    const nums = numbers.split(delimiter).map(Number);
+    const negatives = [];
+    for (var i = 0; i < nums.length; i++) {
+      if (nums[i] < 0) {
+        negatives.push(nums[i]);
       }
-
-      input = input.substring(delimiterEndIndex + 1);
-      return this.calculateSum(this.splitByDelimiters(input, delimiters));
-    }
-
-    return this.calculateSum(this.splitByDelimiters(input, [",", "\n"]));
-  }
-
-  extractDelimiters(delimiterPart) {
-    const delimiters = [];
-    const delimiterRegex = /\[(.*?)\]/g;
-    let match;
-
-    while ((match = delimiterRegex.exec(delimiterPart)) !== null) {
-      delimiters.push(match[1]);
-    }
-
-    return delimiters;
-  }
-
-  splitByDelimiters(input, delimiters) {
-    return this.splitRecursively([input], delimiters);
-  }
-
-  splitRecursively(inputs, delimiters) {
-    if (delimiters.length === 0) {
-      return inputs;
-    }
-
-    const currentDelimiter = delimiters[0];
-    const remainingDelimiters = delimiters.slice(1);
-
-    let splitResults = [];
-    for (let i = 0; i < inputs.length; i++) {
-      splitResults = splitResults.concat(inputs[i].split(currentDelimiter));
-    }
-    return this.splitRecursively(splitResults, remainingDelimiters);
-  }
-
-  calculateSum(numbers) {
-    let sum = 0;
-    let negatives = [];
-
-    for (let i = 0; i < numbers.length; i++) {
-      const num = parseInt(numbers[i], 10);
-      if (isNaN(num)) continue;
-      if (num < 0) {
-        negatives.push(num);
-      } else if (num <= 1000) {
-        sum += num;
+      //1000 condtion
+      if (nums[i] > 1000) {
+        nums[i] = 0; // ignore numbers greater than 1000 by setting them to 0
       }
     }
-
     if (negatives.length > 0) {
-      throw new Error(`negative numbers not allowed ${negatives.join(", ")}`);
+      throw new Error("negative numbers not allowed: " + negatives.join(", "));
     }
 
-    return sum;
+    return nums.reduce((sum, num) => sum + num, 0);
   }
+
+  if (numbers === "") return 0; // emty string
+  if (!isNaN(numbers)) return parseInt(numbers, 10);
+
+  const nums = numbers.split(/,|\n/).map(Number); // split the the using , and \n means new line and map means string to numbers
+  const negatives = [];
+  for (var i = 0; i < nums.length; i++) {
+    if (nums[i] < 0) {
+      negatives.push(nums[i]);
+    }
+    //1000 condtion
+    if (nums[i] > 1000) {
+      nums[i] = 0; // ignore numbers greater than 1000 by setting them to 0
+    }
+  }
+  if (negatives.length > 0) {
+    throw new Error("negative numbers not allowed: " + negatives.join(", "));
+  }
+
+  return nums.reduce((sum, num) => sum + num, 0); // sum the numbers
 }
 
-module.exports = StringCalculator;
+module.exports = { add };
