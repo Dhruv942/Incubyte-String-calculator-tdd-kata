@@ -1,20 +1,45 @@
 String Calculator
-Overview
-The String Calculator is a simple application designed to evaluate arithmetic expressions given as strings. It supports basic operations such as addition and can handle different types of delimiters. It also includes validation to prevent the use of negative numbers and ignores numbers greater than 1000.
+A CLI application to perform string-based calculations. The program allows you to input a string containing numbers and delimiters, and it calculates the sum of the numbers. The application also supports custom delimiters and error handling for negative numbers.
 
-Features
-Basic functionality: Supports empty strings and single numbers.
-Comma separator: Handles comma-separated values.
-Newline separator: Supports newline-separated values.
-Custom separator: Allows for user-defined delimiters.
-Negative number validation: Throws exceptions for negative numbers.
-Large number handling: Ignores numbers greater than 1000.
+Table of Contents
+Getting Started
+Prerequisites
 Installation
+Usage
+Running the Tests
+Built With
+Authors
+Getting Started
+Follow the instructions to get the project running on your local machine for development and testing.
 
+Prerequisites
+Node.js and NPM
+Installation
+Clone the repository:
 
-To use the String Calculator, clone this repository and install the necessary dependencies.
-
+bash
 Copy code
-git clone <repository-url>
-cd <repository-directory>
+git clone https://github.com/yourusername/string-calculator
+Navigate to the project directory:
+
+bash
+Copy code
+cd string-calculator
+Install the required packages:
+
+bash
+Copy code
 npm install
+Usage
+Run the program:npm test
+
+
+The program will output the sum of the numbers, handling custom delimiters and negative number errors as specified.
+
+Running the Tests
+To ensure the reliability of the calculator, unit tests are provided. To run these tests:
+bash npm test
+
+Built With
+Node.js - The runtime used
+Jest - Testing framework
