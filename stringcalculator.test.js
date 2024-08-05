@@ -32,3 +32,6 @@ test("ingore 1000 number", () => {
 test("Delimiters Length //[delimiter]\n", () => {
   expect(add("//[***]\n1***2***3")).toBe(6);
 });
+test("handle single delimiter with varying length", () => {
+  expect(add("//[longdelimiter]\n1longdelimiter2longdelimiter3")).toBe(6);
+});
