@@ -1,4 +1,4 @@
-const StringCalculator = require("./stringcal.js");
+const StringCalculator = require("./Stringcal");
 const calculator = new StringCalculator();
 
 describe("StringCalculator", () => {
@@ -41,5 +41,8 @@ describe("StringCalculator", () => {
 
   describe("multiple negative numbers not allowed", () => {
     checkException("1,-2,-3", "negative numbers not allowed -2, -3");
+  });
+  describe(" separator", () => {
+    checkResult("1000,2,1001", 1002);
   });
 });

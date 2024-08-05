@@ -43,9 +43,9 @@ class StringCalculator {
       let num = parseInt(numbers[i] || 0);
       if (num < 0) {
         negatives.push(num);
+      } else if (num <= 1000) {
+        sum += num;
       }
-
-      sum += num;
     }
 
     if (negatives.length > 0) {
