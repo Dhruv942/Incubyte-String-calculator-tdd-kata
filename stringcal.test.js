@@ -47,4 +47,8 @@ describe("StringCalculator", () => {
   describe(" separator", () => {
     checkResult("1000,2,1001", 1002);
   });
+
+  describe("Delimiters can be of any length  “//[delimiter]\n” ", () => {
+    checkResult("//[***]\n1***2***3", 6);
+  });
 });
