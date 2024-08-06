@@ -29,9 +29,10 @@ test("ingore 1000 number", () => {
   expect(add("1,1001,1002,5")).toBe(6);
 });
 
-test("Delimiters Length //[delimiter]\n", () => {
-  expect(add("//[***]\n1***2***3")).toBe(6);
+test("only delimeter and answer give the 0", () => {
+  expect(add("// \n")).toBe(0);
 });
-test("handle single delimiter with varying length", () => {
-  expect(add("//[longdelimiter]\n1longdelimiter2longdelimiter3")).toBe(6);
+
+test("only ", () => {
+  expect(add("//[***]\n1***2***3")).toBe(6);
 });

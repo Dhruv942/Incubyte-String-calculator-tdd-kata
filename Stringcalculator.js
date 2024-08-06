@@ -1,7 +1,6 @@
 function add(numbers) {
   if (numbers.startsWith("//")) {
-    const { delimiters, numsString } = parseDelimiters(numbers);
-    return calculateSum(numsString, delimiters);
+    return handleCustomDelimiters(numbers);
   }
 
   if (numbers === "") return 0;
@@ -10,7 +9,7 @@ function add(numbers) {
   return calculateSum(numbers, [",", "\n"]);
 }
 
-function parseDelimiters(numbers) {
+function handleCustomDelimiters(numbers) {
   const delimiterEndIndex = numbers.indexOf("\n");
   const delimiterPart = numbers.slice(2, delimiterEndIndex);
 
@@ -26,33 +25,34 @@ function parseDelimiters(numbers) {
   }
 
   const numsString = numbers.slice(delimiterEndIndex + 1);
-  return { delimiters, numsString };
+  return calculateSum(numsString, delimiters);
 }
 
-function calculateSum(numsString, delimiters) {
+function calculateSum(numbers, delimiters) {
+  const nums = splitNumbers(numbers, delimiters).map(Number);
+  validateNumbers(nums);
+  let sum = 0;
+  for (var i = 0; i < nums.length; i++) {
+    if (nums[i] <= 1000) {
+      sum += nums[i];
+    }
+  }
+  return sum;
+}
+
+function splitNumbers(numbers, delimiters) {
   const escapedDelimiters = delimiters.map((delimiter) =>
     delimiter.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&")
   );
   const splitRegex = new RegExp(escapedDelimiters.join("|"));
-  const nums = numsString.split(splitRegex).map(Number);
+  return numbers.split(splitRegex);
+}
 
-  const negatives = [];
-  let sum = 0;
-
-  for (var i = 0; i < nums.length; i++) {
-    const num = nums[i];
-    if (num < 0) {
-      negatives.push(num);
-    } else if (num <= 1000) {
-      sum += num;
-    }
-  }
-
+function validateNumbers(nums) {
+  const negatives = nums.filter((num) => num < 0);
   if (negatives.length > 0) {
     throw new Error("negative numbers not allowed: " + negatives.join(", "));
   }
-
-  return sum;
 }
 
 module.exports = { add };
