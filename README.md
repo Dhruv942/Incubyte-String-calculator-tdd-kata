@@ -7,7 +7,7 @@ A CLI application to perform string-based calculations. The program allows you t
 Clone the repository:
 
 ```bash
-  https://github.com/Dhruv942/String-calculator-tdd-kata.git
+  https://github.com/Dhruv942/Incubyte-String-calculator-tdd-kata
 ```
 
 Navigate to the project directory::
