@@ -32,7 +32,6 @@ test("ingore 1000 number", () => {
 test("only delimeter and answer give the 0", () => {
   expect(add("// \n")).toBe(0);
 });
-
-test("only ", () => {
-  expect(add("//[***]\n1***2***3")).toBe(6);
+test("Multiple custom delimiters should return their sum", () => {
+  expect(add("//;\n1;2;3;1000")).toBe(1006);
 });
